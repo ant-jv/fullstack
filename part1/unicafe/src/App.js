@@ -27,24 +27,29 @@ const Button = (props) => {
 
 const StatisticLine = (props) => {
   return (
-    <>
-      {props.text}{props.value}<br />
-    </>
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+    </tr>
   )
 }
 
 const Statistics = (props) => {
   if (props.good !== 0 || props.neutral !== 0 || props.bad !== 0){
-    let average = (-props.bad + props.good)/3;
-    let positivePercentage = props.good / (props.bad+props.neutral+props.good);
+    let average = ((-props.bad + props.good)/3).toFixed(1);
+    let positivePercentage = (props.good / (props.bad+props.neutral+props.good)*100).toFixed(1) + "%";
     return (
       <div>
         <h2>statistics</h2>
-        <StatisticLine text="Good: " value={props.good}/>
-        <StatisticLine text="Neutral: " value={props.neutral}/>
-        <StatisticLine text="Bad: " value={props.bad}/>
-        <StatisticLine text="Average: " value={average}/>
-        <StatisticLine text="Positive: " value={positivePercentage}/>
+        <table>
+          <tbody>
+            <StatisticLine text="Good: " value={props.good}/>
+            <StatisticLine text="Neutral: " value={props.neutral}/>
+            <StatisticLine text="Bad: " value={props.bad}/>
+            <StatisticLine text="Average: " value={average}/>
+            <StatisticLine text="Positive: " value={positivePercentage}/>
+          </tbody>
+        </table>
       </div>
     )
   }
