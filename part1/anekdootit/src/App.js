@@ -27,7 +27,6 @@ const App = () => {
       <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>next anecdote</button>
       <button onClick={() => vote(addVote(votes,selected))}>vote</button>
       <MostVotes votes={votes} anecdotes={anecdotes} />
-
     </div>
   )
 }
