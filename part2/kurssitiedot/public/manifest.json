@@ -1,0 +1,8 @@
+{
+  "short_name": "Kurssitiedot",
+  "name": "Part2 - Kurssitiedot",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
