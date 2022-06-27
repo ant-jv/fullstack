@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PersonForm from './components/PersonForm'
 import Phonebook from './components/Phonebook'
 import SearchField from './components/SearchField'
-import axios from 'axios'
+import personService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -11,12 +11,12 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        setPersons(response.data)
-      }, [])
-  })
+    personService
+      .getAll()
+      .then(personsData => {
+        setPersons(personsData)
+      })
+  }, [])
 
   return (
     <div>
@@ -27,7 +27,7 @@ const App = () => {
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} newNumber={newNumber} setNewName={setNewName} setNewNumber={setNewNumber} />
 
       <h2>Numbers</h2>
-      <Phonebook persons={persons} searchTerm={searchTerm}/>
+      <Phonebook persons={persons} setPersons={setPersons} searchTerm={searchTerm} />
     </div>
   )
 }
