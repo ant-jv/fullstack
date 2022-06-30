@@ -1,19 +1,9 @@
 {
   "persons": [
     {
-      "name": "dsa",
-      "number": "xcz",
-      "id": 5
-    },
-    {
-      "name": "jaska",
-      "number": "09890809",
-      "id": 8
-    },
-    {
-      "name": "pera",
-      "number": "122121",
-      "id": 9
+      "name": "antti",
+      "number": "1234",
+      "id": 11
     }
   ]
 }

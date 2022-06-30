@@ -1,19 +1,23 @@
 import personService from '../services/persons'
 
-const PersonForm = ({persons, newName, newNumber, setNewName, setNewNumber, setPersons}) => {
+const PersonForm = ({persons, newName, newNumber, setNewName, setNewNumber, setPersons, setNotificationText, setNotificationType}) => {
 
     const addName = (event) => {
         event.preventDefault()
         if (!alreadyExists(persons, newName)) {
             const newPersonObject = {"name": newName, "number": newNumber}
-            setPersons(persons.concat(newPersonObject))
-            setNewName('')
-            setNewNumber('')
-
             personService
             .create(newPersonObject)
             .then(newPersonData => {
-              console.log(newPersonData)
+                setPersons(persons.concat(newPersonData))
+                setNewName('')
+                setNewNumber('')
+                setNotificationText(`Added ${newName}`)
+                setNotificationType("success")
+                setTimeout(() => {
+                    setNotificationText(null)
+                    setNotificationType(null)
+                }, 5000)
             })
 
         }else{
@@ -24,11 +28,24 @@ const PersonForm = ({persons, newName, newNumber, setNewName, setNewNumber, setP
                 personService
                 .updateNumber(person.id, person.name, newNumber)
                 .then(updatedPerson => {
-                    console.log("Onnistuin", updatedPerson)
                     setPersons(persons.filter(p => p.id !== person.id).concat([updatedPerson]))
-                    setNewName('')
                     setNewNumber('')
-                })
+                    setNewName('')
+                    setNotificationText(`Updated ${person.name}`)
+                    setNotificationType("success")
+                    setTimeout(() => {
+                        setNotificationText(null)
+                        setNotificationType(null)
+                    }, 5000)
+                }, error => {
+                        setNotificationText(`${person.name} is already removed from server`)
+                        setNotificationType("error")
+                        setTimeout(() => {
+                            setNotificationText(null)
+                            setNotificationType(null)
+                        }, 5000)
+                    }
+                )
             }
         }
     }

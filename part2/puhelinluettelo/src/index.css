@@ -1,0 +1,16 @@
+.notification {
+    width: 500px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px dotted;
+    font-size: 18px;
+    text-align: center;
+}
+.success {
+    color: lightseagreen;
+}
+.error {
+    color: red;
+}
