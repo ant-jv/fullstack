@@ -26,7 +26,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <SearchField searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <h3>Add A New</h3>
+      <h3>Add a new</h3>
       <Notification text={notificationText} type={notificationType} />
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} newNumber={newNumber} setNewName={setNewName} setNewNumber={setNewNumber} setNotificationText={setNotificationText} setNotificationType={setNotificationType} />
 
