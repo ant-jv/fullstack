@@ -30,7 +30,7 @@ const App = () => {
       <Notification text={notificationText} type={notificationType} />
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} newNumber={newNumber} setNewName={setNewName} setNewNumber={setNewNumber} setNotificationText={setNotificationText} setNotificationType={setNotificationType} />
 
-      <h2>Numbers</h2>
+      <h2>Numbers:</h2>
       <Phonebook persons={persons} setPersons={setPersons} searchTerm={searchTerm} setNotificationText={setNotificationText} setNotificationType={setNotificationType} />
     </div>
   )
