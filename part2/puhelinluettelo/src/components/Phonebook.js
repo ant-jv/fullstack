@@ -23,7 +23,7 @@ const Phonebook = ({persons, setPersons, searchTerm, setNotificationText, setNot
     return (
         <div>
         { filtered.map(person =>
-            <div key={person.name} >{person.name} {person.number} <button onClick={() => removePerson(person.id, person.name)}>Delete</button></div>
+            <div key={person.id} >{person.name} {person.number} <button onClick={() => removePerson(person.id, person.name)}>Delete</button></div>
         ) }
         </div>
     )

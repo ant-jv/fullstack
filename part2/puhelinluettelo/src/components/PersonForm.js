@@ -9,6 +9,7 @@ const PersonForm = ({persons, newName, newNumber, setNewName, setNewNumber, setP
             personService
             .create(newPersonObject)
             .then(newPersonData => {
+                console.log("testi")
                 setPersons(persons.concat(newPersonData))
                 setNewName('')
                 setNewNumber('')
@@ -18,6 +19,17 @@ const PersonForm = ({persons, newName, newNumber, setNewName, setNewNumber, setP
                     setNotificationText(null)
                     setNotificationType(null)
                 }, 5000)
+            })
+            .catch(error => {
+                console.log("VIRHE:", error.response.data.error)
+                
+                setNotificationText(error.response.data.error)
+                setNotificationType("error")
+                setTimeout(() => {
+                    setNotificationText(null)
+                    setNotificationType(null)
+                }, 5000)
+                
             })
 
         }else{
